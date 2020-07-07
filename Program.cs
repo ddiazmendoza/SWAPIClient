@@ -11,29 +11,16 @@ namespace SwapiClient
         {
             string id = args.Length == 0 ? "1" : args[0];
 
-            var url = @"https://swapi.dev";
-            var client = new HttpClient() { BaseAddress = new Uri(url) };
-            var result = await client.GetAsync($"api/films/{id}/");
+            var url = @"https://swapi.dev"; //Sets the base address of rest API 
+            var client = new HttpClient() { BaseAddress = new Uri(url) }; // New HttpClient 
+            var result = await client.GetAsync($"api/films/{id}/"); // GET verb to the path
+            
             if (result.IsSuccessStatusCode)
             {
                 var content = await result.Content.ReadAsStringAsync();
                 var film = JsonSerializer.Deserialize<Film>(content, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-                Console.WriteLine(film.Title);
                 film.ShowInfo(client);
 
-                foreach (var character in film.Characters) {
-                    var uri = new Uri(character);
-                    var ans =  await client.GetAsync(uri.AbsolutePath);
-                    if (ans.IsSuccessStatusCode) {
-                        var charAns = await ans.Content.ReadAsStringAsync();
-                        var newCharacter = JsonSerializer.Deserialize<Character>(charAns);
-                        System.Console.WriteLine(newCharacter.name);
-                        System.Console.WriteLine(newCharacter.hair_color);
-                        System.Console.WriteLine();
-
-                    }
-                }
             }
             else
             {

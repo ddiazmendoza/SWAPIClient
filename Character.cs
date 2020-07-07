@@ -10,7 +10,6 @@ namespace SwapiClient
         public async void ShowInfo() 
         {
             System.Console.WriteLine(name);
-            System.Console.WriteLine(hair_color);
 
         }
 
