@@ -30,35 +30,4 @@ namespace SwapiClient
 
         }
     }
-
-    public class Film {
-        public string Title { get; set; }
-        public int Episode_Id { get; set; }
-        public string Opening_crawl { get; set; }
-        public string Director { get; set; }
-        public string[] Characters { get; set; }
-        public DateTime Created {get; set;} 
-        public string Url { get; set; }
-
-        public Film() 
-        {
-            System.Console.WriteLine("New film consultated...");
-        } 
-
-        public void ShowInfo() 
-        {
-            System.Console.WriteLine(Title);
-            System.Console.WriteLine("Episode " + Episode_Id.ToString());
-            System.Console.WriteLine(Director);
-            System.Console.WriteLine(Opening_crawl);
-            System.Console.WriteLine(Created.ToShortDateString());
-            System.Console.WriteLine(Url);
-
-            foreach (var character in Characters) 
-            
-            {
-                System.Console.WriteLine(character);
-            }
-        }
-    }
 }
