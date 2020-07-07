@@ -20,7 +20,8 @@ namespace SwapiClient
             System.Console.WriteLine("New film consultated...");
         } 
 
-        public async void ShowInfo(HttpClient client) 
+        public async void ShowInfo(HttpClient client)
+         
         {
             System.Console.WriteLine(Title);
             System.Console.WriteLine("Episode " + Episode_Id.ToString());
